@@ -1,11 +1,11 @@
 {
   "dependencies": {
     "extend-shallow": "^3.0.2",
-    "liquid-node": "^3.0.0"
+    "liquidjs": "^9.25.0"
   },
   "name": "jstransformer-liquid",
-  "version": "0.1.1",
-  "description": "Liquid for Node.js support for JSTransformers.",
+  "version": "0.1.2",
+  "description": "Liquidjs support for JSTransformers.",
   "keywords": [
     "jstransformer"
   ],

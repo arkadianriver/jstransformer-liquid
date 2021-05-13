@@ -1,12 +1,17 @@
 'use strict'
 
 const extend = require('extend-shallow')
-const Liquid = require('liquid-node')
+const { Liquid } = require('liquidjs')
 
-const engine = new Liquid.Engine()
+const engine = new Liquid({
+  root: 'layouts/' // TODO: don't hardcode this
+})
 
 exports.name = 'liquid'
 exports.outputFormat = 'html'
+
+// TODO: this either
+engine.registerFilter('raise_error', e => console.log('ERROR: '+ e))
 
 exports.renderAsync = function (str, options, locals) {
   return engine.parseAndRender(str, extend({}, options, locals))
