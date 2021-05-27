@@ -4,7 +4,7 @@ const extend = require('extend-shallow')
 const { Liquid } = require('liquidjs')
 
 const engine = new Liquid({
-  root: 'layouts/' // TODO: don't hardcode this
+  root: `${__dirname}/../cpd-mddoc-metalsmith/layouts/` // TODO: don't hardcode here
 })
 
 exports.name = 'liquid'
