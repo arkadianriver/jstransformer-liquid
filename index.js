@@ -2,13 +2,12 @@
 
 const extend = require('extend-shallow')
 const { Liquid } = require('liquidjs')
-const caller = require('caller');
 const path = require('path');
 
-const callingPath = path.dirname(caller());
+const referencingPath = Object.values(require.cache)[0].children[0].path;
 
 const engine = new Liquid({
-  root: `${callingPath}/layouts/`
+  root: `${referencingPath}/layouts/`
 })
 
 exports.name = 'liquid'

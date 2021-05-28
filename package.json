@@ -1,8 +1,7 @@
 {
   "dependencies": {
     "extend-shallow": "^3.0.2",
-    "liquidjs": "^9.25.0",
-    "caller": "^1.0.1"
+    "liquidjs": "^9.25.0"
   },
   "name": "jstransformer-liquid",
   "version": "0.1.2",
