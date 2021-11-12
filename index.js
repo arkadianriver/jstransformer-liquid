@@ -7,7 +7,7 @@ const path = require('path');
 const referencingPath = Object.values(require.cache)[0].children[0].path;
 
 const engine = new Liquid({
-  root: `${referencingPath}/layouts/`
+  root: [`${referencingPath}/layouts/`, `${process.cwd()}/layouts/`]
 })
 
 exports.name = 'liquid'
