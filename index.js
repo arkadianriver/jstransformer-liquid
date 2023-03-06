@@ -10,7 +10,7 @@ const referencingPath = Object.values(require.cache)[0].children[0].path;
 exports.name = 'liquid'
 exports.outputFormat = 'html'
 
-exports.renderAsync = function (str, options, locals) {
+exports.renderAsync = async function (str, options, locals) {
   const defaultRoot = `${referencingPath}/layouts/`;
   const isOptionsObject = options !== null && !Array.isArray(options) && typeof options === "object";
   if (isOptionsObject) {
@@ -32,5 +32,16 @@ exports.renderAsync = function (str, options, locals) {
   // TODO: don't hardcode this here
   engine.registerFilter('raise_error', e => console.log('ERROR: '+ e));
 
-  return engine.parseAndRender(str, extend({}, options, locals));
+  try {
+    return await engine.parseAndRender(str, extend({}, options, locals));
+  } catch (err) {
+    console.log({
+      ERROR: {
+        message: "Cannot render file.",
+        filename: locals.fname,
+        context: err.context
+      }
+    });
+    throw err;
+  }
 }
